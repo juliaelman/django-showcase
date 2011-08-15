@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Project List{% endblock %}
+
+{% block body_class %}project_pages{% endblock %}
+
+{% block body_id %}project_list{% endblock %}
+
+{% block main %}
+    <article>
+	{% for object in object_list %}
+        <section>
+            <h1><a href="{{ object.get_absolute_url }}">{{ object }}</a></h1>
+            <p>{{ object.client }}</p>
+            <time datetime="{{ object.completion_date|date:"m Y" }}" pubdate>{{ object.completion_date|date:"F Y" }}</time>
+            <p class="description">{{ object.description }}</p>
+        </section>
+	{% endfor %}
+    </article>
+{% endblock %}

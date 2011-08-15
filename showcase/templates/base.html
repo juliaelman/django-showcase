@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="{% block meta_desc %}{% endblock %}" />
+<title>Django-Showcase Example {% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ STATIC_URL }}screen.css">
+</head>
+
+<body class ="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+{% block body %}
+<section id="main">
+    <div class="wrapper">
+    {% block main %}{% endblock %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

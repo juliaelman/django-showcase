@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Project Detail{% endblock %}
+
+{% block body_class %}project_pages{% endblock %}
+
+{% block body_id %}project_detail{% endblock %}
+
+{% block main %}
+{% load showcase %}
+{% get_projects as project_list %}
+    <article>
+        <section>
+            <h1><a href="{{ object.get_absolute_url }}">{{ object }}</a></h1>
+            <p>{{ object.client }}</p>
+            <time datetime="{{ object.completion_date|date:"m Y" }}" pubdate>{{ object.completion_date|date:"F Y" }}</time>
+            <p class="description">{{ object.description }}</p>
+	</section>
+        {% comment %}The below nav assumes that you have more than one project in your database. It will display all the projects, but exclude the current.{% endcomment %}
+        <nav>
+        Other projects: {% for project in project_list %}{% if project.id != object.id %}<a href="{{ project.get_absolute_url }}">{{ project }}</a>{% endif %}{% endfor %}
+        </nav>
+    </article>
+{% endblock %}
